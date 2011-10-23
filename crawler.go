@@ -3,6 +3,7 @@ package main
 import (
 "exec"
 //"io/ioutil"
+"pgsql"
 )
 
 func Crawl(link string) {
