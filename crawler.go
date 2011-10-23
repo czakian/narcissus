@@ -2,19 +2,26 @@ package main
 
 import (
 "exec"
-"fmt"
-"io/ioutil"
+//"io/ioutil"
 )
 
+func Crawl(link string) {
+ // contents,err :=
+  exec.Command(
+  "wget", 
+  //"-qO-", //write the webpages to the stdout
+  "--no-parent", 
+  "--wait=2", 
+  "--timeout=100", 
+  "--recursive", 
+  "--accept=html,htm,php,net,aspx,asp,",
+  link).Output()
+}
 
 //testing wget in go
 func main() {
-  website := "http://www.google.com"
-  val := exec.Command("wget", website)
-  val.Output()
-  infile := "index.html"
-  contents,_ := ioutil.ReadFile(infile)
-  fmt.Println(string(contents))
+  seed := "http://www.cnn.com"
+  Crawl(seed);
 }
 
 
